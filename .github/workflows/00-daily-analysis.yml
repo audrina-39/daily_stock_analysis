@@ -7,7 +7,7 @@ on:
       mode:
         description: '运行模式'
         required: true
-        default: 'full'
+        default: 'dry-run'
         type: choice
         options:
           - dry-run       # 只测试行情数据，不调用 AI、不发送通知
@@ -469,7 +469,7 @@ jobs:
           fi
 
           # 判断运行模式
-          MODE="${{ github.event.inputs.mode || 'full' }}"
+          MODE="${{ github.event.inputs.mode || 'dry-run' }}"
           
           echo "=========================================="
           echo "🚀 A股自选股智能分析系统"
