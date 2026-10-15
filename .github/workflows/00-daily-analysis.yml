@@ -1,7 +1,10 @@
 name: 每日股票分析
 
 on:
-  # 紫衣基金总控：仅手动触发，避免与现有基金监测任务重复。
+  # 一次性试运行分支；main 仍保持仅手动触发。
+  push:
+    branches:
+      - codex-smoke-test
   workflow_dispatch:
     inputs:
       mode:
@@ -469,7 +472,7 @@ jobs:
           fi
 
           # 判断运行模式
-          MODE="${{ github.event.inputs.mode || 'full' }}"
+          MODE="${{ github.event.inputs.mode || 'dry-run' }}"
           
           echo "=========================================="
           echo "🚀 A股自选股智能分析系统"
